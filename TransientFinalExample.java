@@ -4,7 +4,9 @@
 
 import java.io.*;
 import lombok.*;
+import lombok.extern.java.*;
 
+@Log
 @Builder(toBuilder = true)
 public class TransientFinalExample implements Serializable {
     static class NonSerializableFiled {
@@ -32,7 +34,9 @@ public class TransientFinalExample implements Serializable {
     }
 
     public static void main(String... args) throws IOException, ClassNotFoundException {
+        log.info("Checking Serialization ...");
         new Example().checkSerialization(5);
+        log.info("Done");
     }
 
     // tests and examples below

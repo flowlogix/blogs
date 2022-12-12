@@ -1,0 +1,9 @@
+:nofooter:
+= Blog source code and examples
+
+You can use JBang to run the examples right from GitHum, for eexample:
+
+[,shell]
+----
+$ jbang https://github.com/flowlogix/blogs/blob/main/TransientFinalExample.java
+----
