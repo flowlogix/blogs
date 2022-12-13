@@ -24,6 +24,7 @@ public class TransientFinalExample implements Serializable {
         this(intValue, null);
     }
 
+    @SuppressWarnings("unused")
     public TransientFinalExample(Integer intValue, NonSerializableFiled nonSerializableField) {
         this.intValue = intValue;
         this.nonSerializableField = new NonSerializableFiled(intValue + 1);
