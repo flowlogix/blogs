@@ -26,7 +26,7 @@ public class TransientFinalExample implements Serializable {
 
     public TransientFinalExample(Integer intValue, NonSerializableFiled nonSerializableField) {
         this.intValue = intValue;
-        this.nonSerializableField = nonSerializableField == null ? new NonSerializableFiled(intValue + 1) : nonSerializableField;
+        this.nonSerializableField = new NonSerializableFiled(intValue + 1);
     }
 
     Object readResolve() {
