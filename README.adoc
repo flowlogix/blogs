@@ -1,9 +1,31 @@
+:title: README
 :nofooter:
 = Blog source code and examples
 
 You can use JBang to run the examples right from GitHum, for eexample:
 
+== Run the downloaded Java dile directly (requires JBang)
 [,shell]
 ----
-$ jbang https://github.com/flowlogix/blogs/blob/main/TransientFinalExample.java
+$ ./TransientFinalExample.java
+----
+== Run directly from the web
+[,shell]
+----
+$ jbang --ea https://github.com/flowlogix/blogs/blob/main/TransientFinalExample.java
+----
+== Edit and experiment
+[,shell]
+----
+$ jbang edit https://github.com/flowlogix/blogs/blob/main/TransientFinalExample.java
+----
+== Run again after editing
+[,shell]
+----
+$ jbang --ea https://github.com/flowlogix/blogs/blob/main/TransientFinalExample.java
+----
+== Refresh from the web
+[,shell]
+----
+$ jbang --ea --fresh https://github.com/flowlogix/blogs/blob/main/TransientFinalExample.java
 ----
