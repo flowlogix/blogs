@@ -1,4 +1,5 @@
-///usr/bin/env jbang --ea "$0" "$@" ; exit $?
+///usr/bin/env jbang "$0" "$@" ; exit $?
+//RUNTIME_OPTIONS -ea
 //DEPS org.projectlombok:lombok:LATEST
 
 
