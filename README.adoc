@@ -4,7 +4,7 @@
 
 You can use JBang to run the examples right from GitHub, for eexample:
 
-== Run the downloaded Java dile directly (requires JBang)
+== Run the downloaded Java file directly (requires JBang)
 [,shell]
 ----
 $ ./TransientFinalExample.java
@@ -17,7 +17,7 @@ $ jbang https://github.com/flowlogix/blogs/blob/main/TransientFinalExample.java
 == Edit and experiment
 [,shell]
 ----
-$ jbang edit --live https://github.com/flowlogix/blogs/blob/main/TransientFinalExample.java
+$ jbang edit https://github.com/flowlogix/blogs/blob/main/TransientFinalExample.java
 ----
 == Run again after editing
 [,shell]
