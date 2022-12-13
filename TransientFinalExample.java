@@ -17,34 +17,24 @@ public class TransientFinalExample implements Serializable {
             this.intValue = intValue;
         }
     }
-    final Integer intValue;
-    final transient NonSerializableFiled nonSerializableField;
-
-    public TransientFinalExample(Integer intValue) {
-        this(intValue, null);
-    }
-
-    @SuppressWarnings("unused")
-    public TransientFinalExample(Integer intValue, NonSerializableFiled nonSerializableField) {
-        this.intValue = intValue;
-        this.nonSerializableField = new NonSerializableFiled(intValue + 1);
-    }
+    final Integer intValue = 5;
+    final transient NonSerializableFiled nonSerializableField = new NonSerializableFiled(6);
 
     Object readResolve() {
-        // return new TransientFinalExample(intValue);
+        // return new TransientFinalExample();
         return toBuilder().build();
     }
 
     public static void main(String... args) throws IOException, ClassNotFoundException {
         log.info("Checking Serialization ...");
-        new Example().checkSerialization(5);
+        new Example().checkSerialization();
         log.info("Done");
     }
 
     // tests and examples below
     public static class Example {
-        public void checkSerialization(int value) throws IOException, ClassNotFoundException {
-            var original = new TransientFinalExample(value);
+        public void checkSerialization() throws IOException, ClassNotFoundException {
+            var original = new TransientFinalExample();
             var deserialized = serializeAndDeserialize(original);
 
             assert original.nonSerializableField.intValue.equals(deserialized.nonSerializableField.intValue);
