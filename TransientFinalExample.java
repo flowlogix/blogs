@@ -10,15 +10,15 @@ import lombok.extern.java.*;
 @Log
 @Builder(toBuilder = true)
 public class TransientFinalExample implements Serializable {
-    static class NonSerializableFiled {
+    static class NonSerializableField {
         final Integer intValue;
 
-        public NonSerializableFiled(Integer intValue) {
+        public NonSerializableField(Integer intValue) {
             this.intValue = intValue;
         }
     }
     final Integer intValue = 5;
-    final transient NonSerializableFiled nonSerializableField = new NonSerializableFiled(6);
+    final transient NonSerializableField nonSerializableField = new NonSerializableField(6);
 
     Object readResolve() {
         // return new TransientFinalExample();
