@@ -1,9 +1,11 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
 //RUNTIME_OPTIONS -ea
 //DEPS org.projectlombok:lombok:LATEST
+//DEPS com.flowlogix:flowlogix-jee:LATEST
 
 
 import java.io.*;
+import com.flowlogix.util.*;
 import lombok.*;
 import lombok.extern.java.*;
 
@@ -27,30 +29,10 @@ public class TransientFinalExample implements Serializable {
 
     public static void main(String... args) throws IOException, ClassNotFoundException {
         log.info("Checking Serialization ...");
-        new Example().checkSerialization();
+        var original = new TransientFinalExample();
+        var deserialized = SerializeTester.serializeAndDeserialize(original);
+
+        assert original.nonSerializableField.intValue.equals(deserialized.nonSerializableField.intValue);
         log.info("Done");
-    }
-
-    // tests and examples below
-    public static class Example {
-        public void checkSerialization() throws IOException, ClassNotFoundException {
-            var original = new TransientFinalExample();
-            var deserialized = serializeAndDeserialize(original);
-
-            assert original.nonSerializableField.intValue.equals(deserialized.nonSerializableField.intValue);
-        }
-
-        public TransientFinalExample serializeAndDeserialize(TransientFinalExample original) throws IOException, ClassNotFoundException {
-            // serialize
-            var byteArrayOutputStream = new ByteArrayOutputStream();
-            try (var outputStream = new ObjectOutputStream(byteArrayOutputStream)) {
-                outputStream.writeObject(original);
-            }
-
-            // deserialize
-            try (var inputStream = new ObjectInputStream(new ByteArrayInputStream(byteArrayOutputStream.toByteArray()))) {
-                return (TransientFinalExample) inputStream.readObject();
-            }
-        }
     }
 }
