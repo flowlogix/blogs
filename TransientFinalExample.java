@@ -30,7 +30,7 @@ public class TransientFinalExample implements Serializable {
     public static void main(String... args) throws IOException, ClassNotFoundException {
         log.info("Checking Serialization ...");
         var original = new TransientFinalExample();
-        var deserialized = SerializeTester.serializeAndDeserialize(original);
+        TransientFinalExample deserialized = SerializeTester.serializeAndDeserialize(original);
 
         assert original.nonSerializableField.intValue.equals(deserialized.nonSerializableField.intValue);
         log.info("Done");
