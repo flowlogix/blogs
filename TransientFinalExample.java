@@ -3,7 +3,7 @@
 //DEPS org.projectlombok:lombok:LATEST
 //DEPS com.flowlogix:flowlogix-jee:LATEST
 
-// uncomment the below line when using JDK < 21
+// remove the below line when using JDK < 21
 //COMPILE_OPTIONS -proc:full
 
 import java.io.*;
